@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/predict', methods=['GET','POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     if request.method == 'POST':
         model = pickle.load(open('model.pkl', 'rb'))
@@ -19,4 +19,4 @@ def predict():
         return render_template('result.html', result=result)
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
